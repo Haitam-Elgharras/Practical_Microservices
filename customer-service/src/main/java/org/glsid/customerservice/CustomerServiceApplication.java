@@ -2,6 +2,7 @@ package org.glsid.customerservice;
 
 import org.glsid.customerservice.entities.Customer;
 import org.glsid.customerservice.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,8 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 @SpringBootApplication
 public class CustomerServiceApplication {
+    @Value("${my.custom.property}")
+    private String myCustomProperty;
 
     public static void main(String[] args) {
         SpringApplication.run(CustomerServiceApplication.class, args);
@@ -24,6 +27,10 @@ public class CustomerServiceApplication {
             customerRepository.save(new Customer(null, "haitam", "haitam@gmail.com"));
             customerRepository.save(new Customer(null, "lamyae", "lamyae@gmail.com"));
             customerRepository.save(new Customer(null, "soufian", "soufian@gmail.com"));
+            System.out.println("***********************");
+            System.out.println(myCustomProperty);
+            System.out.println("***********************");
+
         };
     }
 
