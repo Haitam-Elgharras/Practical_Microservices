@@ -14,6 +14,9 @@ public class CustomerServiceApplication {
     @Value("${my.custom.property}")
     private String myCustomProperty;
 
+    @Value("${eureka.instance.prefer-ip-address}")
+    private String globalProperty;
+
     public static void main(String[] args) {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }
@@ -29,6 +32,7 @@ public class CustomerServiceApplication {
             customerRepository.save(new Customer(null, "soufian", "soufian@gmail.com"));
             System.out.println("***********************");
             System.out.println(myCustomProperty);
+            System.out.println(globalProperty);
             System.out.println("***********************");
 
         };
